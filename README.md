@@ -1,8 +1,8 @@
-this app is using webapp2 framework, which is compatible with Google App Engine.
+This app is using webapp2 framework, which is compatible with Google App Engine.
 It also use the template framework from Jinja2 library, and mysql for data storage.
 
-The time we store in Mysql is actually the clock in or clock out time in UTC time,
-but we convert that to local time whe we display that in the user side.
+The `Time` variable we store in Mysql is actually the clock event time in UTC time,
+but we convert that to local time when we display that in the user side.
 
 In order to save time on local development, I use an only sql database https://www.freesqldatabase.com
 Which is good for this use case.
