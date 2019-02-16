@@ -4,40 +4,35 @@
     <meta charset="UTF-8">
     <title>HiMaMa Day Care System</title>
 </head>
-<body>
-<form accept-charset="utf-8">
-    <p>First Name: <input type="text" placeholder="First Name" name="firstName" required></p>
-    <p>Last Name: <input type="text" placeholder="Last Name" name="lastName" required></p>
-    <p>Clock In or Clock Out:
-        <input type="radio" name="clockType" value="clock In" required> Clock In<br>
-        <input type="radio" name="clockType" value="clock Out"> Clock Out<br>
-    </p>
-    <input type="submit" onclick="return createClockEvent()" value="Submit"><br>
-</form>
-<div>
-    <form action="/list-clock-event" method="get" accept-charset="utf-8">
-        <input type="submit" value="Show the Clock Event Logs"><br>
-    </form>
-    {% block body %}{% endblock %}
-</div>
-<script>
-    function createClockEvent() {
-        const firstName = document.getElementsByName('firstName')[0].value;
-        const lastName = document.getElementsByName('lastName')[0].value;
-        const clockType = document.getElementsByName('clockType')[0].value;
-        const Http = new XMLHttpRequest();
-        const url = '/create-clock-event';
-        Http.open("POST", url);
-        const body = new FormData();
-        body.append('firstName', firstName);
-        body.append('lastName', lastName);
-        body.append('clockType', clockType);
-        Http.send(body);
-        Http.onreadystatechange = (e) => {
-            console.log(Http.responseText)
-        }
-    }
-</script>
 
+<style>
+    body {
+        text-align: center;
+        background: beige;
+    }
+    input.button {
+        background-color: lightblue;
+        margin-bottom: 20px;
+    }
+</style>
+
+<body>
+    <div>
+        <form action="/create-clock-event" method="post" accept-charset="utf-8">
+            <p>First Name: <input type="text" placeholder="First Name" name="firstName" required></p>
+            <p>Last Name: <input type="text" placeholder="Last Name" name="lastName" required></p>
+            <p>Clock In or Clock Out:<br>
+                <input type="radio" name="clockType" value="clock In" required> Clock In<br>
+                <input type="radio" name="clockType" value="clock Out"> Clock Out<br>
+            </p>
+            <input class="button" type="submit" value="Submit"><br>
+        </form>
+    </div>
+    <div>
+        <form action="/list-clock-event" method="get" accept-charset="utf-8">
+            <input class="button" type="submit" value="Show the Clock Event Logs"><br>
+        </form>
+        {% block body %}{% endblock %}
+    </div>
 </body>
 </html>

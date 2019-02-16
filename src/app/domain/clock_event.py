@@ -17,7 +17,6 @@ def creat_clock_event(first_name, last_name, clock_type):
     time = datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S')
     sql = "INSERT INTO %s(FIRST_NAME, LAST_NAME, CLOCK_TYPE, EVENT_TIME) VALUES ('%s','%s','%s','%s')" % \
           (MYSQL_TABLE_NAME, first_name, last_name, clock_type, time)
-    print sql
     try:
         cursor.execute(sql)
         db.commit()

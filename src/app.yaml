@@ -1,8 +1,7 @@
-application: socmktg
+application: clock-in-clock-out
 version: 1
 runtime: python27
 api_version: 1
 
 - url: .*
   script: main.APP
-
