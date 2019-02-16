@@ -1,6 +1,5 @@
 import webapp2
 from routes import routes
-import os
 
 
 APP = webapp2.WSGIApplication(routes=routes, debug=True)
