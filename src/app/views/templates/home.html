@@ -5,17 +5,53 @@
     <title>HiMaMa Day Care System</title>
 </head>
 <body>
-<form action="" method="post" accept-charset="utf-8">
-    <p>First Name: <input type="text" placeholder="First Name" name="firstName"></p>
-    <p>Last Name: <input type="text" placeholder="Last Name" name="lastName"></p>
+<form accept-charset="utf-8">
+    <p>First Name: <input type="text" placeholder="First Name" name="firstName" required></p>
+    <p>Last Name: <input type="text" placeholder="Last Name" name="lastName" required></p>
     <p>Clock In or Clock Out:
-        <input type="radio" name="clockType" value="clockIn"> Clock In<br>
-        <input type="radio" name="clockType" value="clockOut"> Clock Out<br>
+        <input type="radio" name="clockType" value="clock In" required> Clock In<br>
+        <input type="radio" name="clockType" value="clock Out"> Clock Out<br>
     </p>
-    <input type="submit" value="Submit">
+    <input type="submit" onclick="return createClockEvent()" value="Submit"><br>
 </form>
+<div>
+    <form action="/list-clock-event" method="get" accept-charset="utf-8">
+        <input type="submit" value="Show the Clock Event Logs"><br>
+    </form>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>last Name</th>
+            <th>Clock Type</th>
+            <th>Time</th>
+        </tr>
+        {% for clockEvent in clockEvents %}
+        <tr>
+            <td>{{ clockEvent.firstName }}</td>
+            <td>{{ clockEvent.lastName }}</td>
+            <td>{{ clockEvent.clockType }}</td>
+            <td>{{ clockEvent.eventTime }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 <script>
-
+    function createClockEvent() {
+        const firstName = document.getElementsByName('firstName')[0].value;
+        const lastName = document.getElementsByName('lastName')[0].value;
+        const clockType = document.getElementsByName('clockType')[0].value;
+        const Http = new XMLHttpRequest();
+        const url = '/create-clock-event';
+        Http.open("POST", url);
+        const body = new FormData();
+        body.append('firstName', firstName);
+        body.append('lastName', lastName);
+        body.append('clockType', clockType);
+        Http.send(body);
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+        }
+    }
 </script>
 
 </body>
