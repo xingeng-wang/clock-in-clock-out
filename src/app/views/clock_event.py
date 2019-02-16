@@ -9,9 +9,15 @@ class CreateClockEventHandler(webapp2.RequestHandler):
         clock_type = self.request.get('clockType')
         last_name = self.request.get('lastName')
         first_name = self.request.get('firstName')
-        creat_clock_event(first_name, last_name, clock_type)
-        template = JINJA_ENVIRONMENT.get_template('home.html')
-        self.response.out.write(template.render())
+        try:
+            creat_clock_event(first_name, last_name, clock_type)
+            template = JINJA_ENVIRONMENT.get_template('create_event.html')
+            message = '%s %s %s succeed' % (first_name, last_name, clock_type)
+            self.response.out.write(template.render({'message': message}))
+        except:
+            template = JINJA_ENVIRONMENT.get_template('create_event.html')
+            message = '%s %s Failed to %s ' % (first_name, last_name, clock_type)
+            self.response.out.write(template.render({'message': message}))
 
 
 class ListClockEventHandler(webapp2.RequestHandler):
