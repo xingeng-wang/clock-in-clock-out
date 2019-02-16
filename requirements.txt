@@ -1,3 +1,4 @@
 WebOb
 Paste
 webapp2
+jinja2
