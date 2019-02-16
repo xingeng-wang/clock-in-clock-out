@@ -1,4 +1,8 @@
 this app is using webapp2 framework, which is compatible with Google App Engine.
+It also use the template framework from Jinja2 library, and mysql for data storage.
+
+The time we store in Mysql is actually the clock in or clock out time in UTC time,
+but we convert that to local time whe we display that in the user side.
 
 # How to run this in local
 - run the `virtualenv env` to create a virtual environment

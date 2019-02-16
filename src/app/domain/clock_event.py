@@ -1,6 +1,19 @@
+import time
+
 import MySQLdb
 from settings import MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_NAME, MYSQL_TABLE_NAME
 from datetime import datetime
+
+
+def datetime_from_utc_to_local(utc_datetime):
+    """
+    convert the utc time to local time
+    :param utc_datetime: the clock in/out time in utc time zone
+    :return: the clock in/out time in local time zone
+    """
+    now_timestamp = time.time()
+    offset = datetime.fromtimestamp(now_timestamp) - datetime.utcfromtimestamp(now_timestamp)
+    return utc_datetime + offset
 
 
 def creat_clock_event(first_name, last_name, clock_type):
@@ -38,6 +51,7 @@ def list_clock_event():
     for row in sql_results:
         event_time = row[3]
         if isinstance(event_time, datetime):
+            event_time = datetime_from_utc_to_local(event_time)
             event_time = unicode(event_time.replace(microsecond=0))
         results.append({'firstName': row[0], 'lastName': row[1], 'clockType': row[2], 'eventTime': event_time})
     db.close()
