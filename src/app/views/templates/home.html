@@ -18,22 +18,7 @@
     <form action="/list-clock-event" method="get" accept-charset="utf-8">
         <input type="submit" value="Show the Clock Event Logs"><br>
     </form>
-    <table>
-        <tr>
-            <th>First Name</th>
-            <th>last Name</th>
-            <th>Clock Type</th>
-            <th>Time</th>
-        </tr>
-        {% for clockEvent in clockEvents %}
-        <tr>
-            <td>{{ clockEvent.firstName }}</td>
-            <td>{{ clockEvent.lastName }}</td>
-            <td>{{ clockEvent.clockType }}</td>
-            <td>{{ clockEvent.eventTime }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    {% block body %}{% endblock %}
 </div>
 <script>
     function createClockEvent() {

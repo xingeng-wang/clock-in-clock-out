@@ -20,5 +20,5 @@ class ListClockEventHandler(webapp2.RequestHandler):
         result = list_clock_event()
         # self.response.headers['Content-Type'] = 'application/json'
         # self.response.out.write(json.dumps(result))
-        template = JINJA_ENVIRONMENT.get_template('home.html')
+        template = JINJA_ENVIRONMENT.get_template('event_table.html')
         self.response.out.write(template.render({'clockEvents': result}))

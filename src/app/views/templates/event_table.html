@@ -1,0 +1,19 @@
+{% extends "home.html" %}
+{% block body %}
+<table>
+    <tr>
+        <th>First Name</th>
+        <th>last Name</th>
+        <th>Clock Type</th>
+        <th>Time</th>
+    </tr>
+    {% for clockEvent in clockEvents %}
+    <tr>
+        <td>{{ clockEvent.firstName }}</td>
+        <td>{{ clockEvent.lastName }}</td>
+        <td>{{ clockEvent.clockType }}</td>
+        <td>{{ clockEvent.eventTime }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
