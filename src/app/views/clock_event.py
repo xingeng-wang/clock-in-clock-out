@@ -5,6 +5,9 @@ from settings import JINJA_ENVIRONMENT
 
 
 class CreateClockEventHandler(webapp2.RequestHandler):
+    """
+    API handler for create  the clock event entity
+    """
     def post(self):
         clock_type = self.request.get('clockType')
         last_name = self.request.get('lastName')
@@ -21,6 +24,9 @@ class CreateClockEventHandler(webapp2.RequestHandler):
 
 
 class ListClockEventHandler(webapp2.RequestHandler):
+    """
+    API handler for retrieve the clock event entity
+    """
     def get(self):
         result = list_clock_event()
         template = JINJA_ENVIRONMENT.get_template('event_table.html')

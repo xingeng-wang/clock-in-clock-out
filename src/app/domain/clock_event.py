@@ -40,7 +40,9 @@ def creat_clock_event(first_name, last_name, clock_type):
 
 
 def list_clock_event():
-    # prepare a cursor object using cursor() method
+    """
+    list the clock event from the sql database
+    """
     db = MySQLdb.connect(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_NAME)
     cursor = db.cursor()
 
