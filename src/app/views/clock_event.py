@@ -1,6 +1,6 @@
 import webapp2
 
-from app.domain.clock_event import creat_clock_event, list_clock_event
+from ..domain.clock_event import creat_clock_event, list_clock_event
 from settings import JINJA_ENVIRONMENT
 
 
