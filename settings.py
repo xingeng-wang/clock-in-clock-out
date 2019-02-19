@@ -9,5 +9,5 @@ MYSQL_TABLE_NAME = 'CLOCK_EVENT'
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__) + "/app/views/templates")
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__) + "/src/app/views/templates")
 )

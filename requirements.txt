@@ -1,5 +1,6 @@
 WebOb
 Paste
+gunicorn
 webapp2
 jinja2
 MySQL-python
